@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}{{page_title}}{% endblock title %}
+
+{% block css %}
+{% endblock css %}
+
+{% block content %}
+    <div class="main-content-create-form">
+      <div class="container">
+        <h1>{{page_title}}</h1>
+        <form action="" method="post" enctype="multipart/form-data" class="form-artikel">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="{{ forms.WhsIdf.id_for_label }}" class="form-label">Nama Gudang</label>
+            {{ forms.WhsIdf }}
+          </div>
+          <div class="mb-3">
+            <label for="{{ forms.TrxOutDate.id_for_label }}" class="form-label">Tanggal Pengeluaran</label>
+            {{ forms.TrxOutDate }}
+          </div>
+          <div class="mb-3">
+            <label for="{{ forms.TrxOutSuppIdf.id_for_label }}" class="form-label">Nama Customer</label>
+            {{ forms.TrxOutSuppIdf }}
+          </div>
+          <div class="mb-3">
+            <label for="{{ forms.TrxOutNotes.id_for_label }}" class="form-label">Catatan</label>
+            {{ forms.TrxOutNotes }}
+          </div>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-primary" type="submit">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+{% endblock content %}

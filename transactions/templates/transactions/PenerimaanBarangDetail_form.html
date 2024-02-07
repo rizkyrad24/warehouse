@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}{{page_title}}{% endblock title %}
+
+{% block css %}
+{% endblock css %}
+
+{% block content %}
+    <div class="main-content-create-form">
+      <div class="container">
+        <h1>{{page_title}}</h1>
+        <form action="" method="post" enctype="multipart/form-data" class="form-artikel">
+          {% csrf_token %}
+          {{ forms.TrxInIDF }}
+          <div class="mb-3">
+            <label for="{{ forms.TrxInDProductIdf.id_for_label }}" class="form-label">Nama Produk</label>
+            {{ forms.TrxInDProductIdf }}
+          </div>
+          <div class="mb-3">
+            <label for="{{ forms.TrxInDQtyDus.id_for_label }}" class="form-label">Qty Dus</label>
+            {{ forms.TrxInDQtyDus }}
+          </div>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-primary" type="submit">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+{% endblock content %}

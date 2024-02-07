@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}{{page_title}}{% endblock title %}
+
+{% block css %}
+{% endblock css %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">{{page_title}}</h1>
+    <a href="{% url 'create-customer' %}" class="btn btn-primary">Tambah Data</a>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nama Customer</th>
+            <th scope="col">Create At</th>
+            <th scope="col">Update At</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for record in data %}
+          <tr>
+            <th scope="row">{{record.CustomerPk}}</th>
+            <td>{{record.CustomerName}}</td>
+            <td>{{record.Created_At}}</td>
+            <td>{{record.Update_At}}</td>
+            <td>
+                <a href="{% url 'edit-customer' pk=record.CustomerPk %}" class="btn btn-sm btn-warning me-1">Edit</a>
+                <a href="{% url 'delete-customer' pk=record.CustomerPk %}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
