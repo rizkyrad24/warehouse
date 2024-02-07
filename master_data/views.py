@@ -72,7 +72,7 @@ class DeleteSupplierView(DeleteView):
 
 # Customer Crud
 class CustomerView(TemplateView):
-    template_name = "master_data/Customer.html"
+    template_name = "master_data/customer.html"
 
     def get_context_data(self, **kwargs):
         data = Customer.objects.all()
@@ -100,7 +100,7 @@ class CustomerFormView(View):
                 'page_title': 'Create New Customer',
                 'forms': self.forms
             }
-        return render(self.request, 'master_data/Customer_form.html', self.context)
+        return render(self.request, 'master_data/customer_form.html', self.context)
     
     def post(self, request, *args, **kwargs):
         if kwargs.__contains__('pk'):
